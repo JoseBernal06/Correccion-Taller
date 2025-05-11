@@ -9,14 +9,13 @@ import { NgIf, NgFor } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NgIf, NgFor],
+  imports: [IonicModule, CommonModule, FormsModule, NgFor],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss']
 })
 
 export class HomePage implements OnInit {
   messages: Message[] = [];
-  newMessage = '';
   userName = '';
   age = 0; 
   lastName = ''; 
@@ -35,9 +34,9 @@ export class HomePage implements OnInit {
   }
 
   sendMessage() {
-    if (this.newMessage.trim() !== '') {
+    console.log('Formulario enviado');
+    //if (this.newMessage.trim() != '') {
       this.chatService.sendMessage(
-        this.newMessage,
         this.userName,
         this.age,
         this.lastName,
@@ -46,10 +45,14 @@ export class HomePage implements OnInit {
         this.career,
         this.phoneNumber,
         this.maritalStatus
-      );
-      this.newMessage = '';
+        
+      ).then(() => {
+        console.log('Mensaje enviado correctamente');
+
+      }).catch((error) => {
+        console.error('Error al enviar el mensaje:', error);
+
+      });
     }
   }
-}
-
-
+//}

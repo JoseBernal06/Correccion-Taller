@@ -7,13 +7,13 @@
 </ion-header>
 
 <ion-content>
+  <!-- Lista de mensajes -->
   <ion-list>
     <ion-item *ngFor="let msg of messages" class="message-item">
       <ion-label>
         <h3>{{ msg.userName }} {{ msg.lastName }}</h3>
         <p><strong>Edad:</strong> {{ msg.age }}</p>
         <p><strong>Dirección:</strong> {{ msg.address }}</p>
-        <p><strong>Mensaje:</strong> {{ msg.content }}</p>
         <p><strong>Carrera:</strong> {{ msg.career }}</p>
         <p><strong>Número telefónico:</strong> {{ msg.phoneNumber }}</p>
         <p><strong>Estado civil:</strong> {{ msg.maritalStatus }}</p>
@@ -21,10 +21,8 @@
       </ion-label>
     </ion-item>
   </ion-list>
-</ion-content>
 
-
-<ion-content>
+  <!-- Formulario -->
   <ion-list>
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
@@ -74,12 +72,10 @@
       <input type="date" id="birthDate" [(ngModel)]="birthDate">
     </ion-item>
 
-    <ion-item>
-      <ion-button expand="block" (click)="sendMessage()">Enviar Formulario</ion-button>
-    </ion-item>
-
+    <hr>
+    
+    <ion-button expand="block" (click)="sendMessage()">Enviar Formulario</ion-button>
   </ion-list>
 </ion-content>
-
 
 

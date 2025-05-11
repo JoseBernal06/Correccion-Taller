@@ -4,7 +4,7 @@ import { Firestore, collection, addDoc, collectionData, query, orderBy, Document
 import { Observable } from 'rxjs';
 
 export interface Message {
-  content: string;
+
   createdAt: number;
   userName: string;
   lastName?: string;
@@ -30,7 +30,6 @@ export class ChatService {
   }
 
   sendMessage(
-    content: string,
     userName: string,
     age?: number,
     lastName?: string,
@@ -39,11 +38,9 @@ export class ChatService {
     career?: string,
     phoneNumber?: string,
     maritalStatus?: string
-
   ): Promise<DocumentReference<DocumentData>> { // Cambiado el tipo de retorno
     const messagesRef = collection(this.firestore, 'messages');
     const message: Message = {
-      content,
       createdAt: Date.now(),
       userName,
       lastName,
